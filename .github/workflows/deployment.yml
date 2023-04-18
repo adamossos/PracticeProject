@@ -1,4 +1,4 @@
-name: Deploy Project
+name: Deployment
 on: push   #thrigger when push and manually
 jobs:
   lint:
