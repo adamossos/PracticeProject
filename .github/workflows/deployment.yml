@@ -11,36 +11,14 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm lint
-  test:
-    needs: lint   #runs not parallel but when test ist ready
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm test
-  deploy:
-    needs: test   #runs not parallel but when test ist ready
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm run build 
-      - name: Deploy
+        run: npm ci  #or npm install, ci makes sure that install exact same versions as in development
+      - name: Lint
+        run: npm run lint
+        - name: Test code
+        run: npm run test
+        - name: Build code
+        run: npm run build
+        - name: Deploy code
         run: echo "Deploying..."
+        
+ 
