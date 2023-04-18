@@ -1,4 +1,4 @@
-name: Deployment
+name: Deployment1
 on: push   #thrigger when push and manually
 jobs:
   lint:
@@ -14,11 +14,11 @@ jobs:
         run: npm ci  #or npm install, ci makes sure that install exact same versions as in development
       - name: Lint
         run: npm run lint
-        - name: Test code
-        run: npm run test
-        - name: Build code
-        run: npm run build
-        - name: Deploy code
-        run: echo "Deploying..."
+      - name: Test code
+      run: npm run test
+      - name: Build code
+      run: npm run build
+      - name: Deploy code
+      run: echo "Deploying..."
         
  
